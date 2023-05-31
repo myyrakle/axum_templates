@@ -1,30 +1,33 @@
-use std::time::Duration;
+use axum::{extract::Path, response::IntoResponse, routing::get, Json, Router};
 
-use axum::body::{Body, BoxBody};
-use axum::{
-    http::{Request, Response},
-    response::{Html, IntoResponse},
-    routing::get,
-    Json, Router,
-};
-use tower_http::trace::TraceLayer;
-use tracing::Span;
+use super::dtos::user::User;
 
 pub(crate) async fn get_router() -> Router {
     Router::new()
-        .route("/", get(index))
-        .route("/", get(health))
-        .layer(trace)
+        .route("/", get(get_user_list))
+        .route("/:user_id", get(find_user_by_id))
 }
 
-async fn index() -> Html<&'static str> {
-    Html("<h1>Hello, World!</h1>")
+async fn get_user_list() -> impl IntoResponse {
+    let user_list = vec![
+        User {
+            user_id: 1,
+            user_name: "test".to_string(),
+        },
+        User {
+            user_id: 2,
+            user_name: "test2".to_string(),
+        },
+    ];
+
+    Json(user_list).into_response()
 }
 
-use super::dtos::health_response::HealthReponse;
+async fn find_user_by_id(Path(user_id): Path<i32>) -> impl IntoResponse {
+    let user = User {
+        user_id,
+        user_name: "test".to_string(),
+    };
 
-async fn health() -> impl IntoResponse {
-    let server_ok = true;
-
-    Json(HealthReponse { server_ok }).into_response()
+    Json(user).into_response()
 }

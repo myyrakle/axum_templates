@@ -26,6 +26,7 @@ pub(crate) async fn get_router() -> Router {
     Router::new()
         .route("/", get(index))
         .route("/health", get(health))
+        .nest("/user", crate::routes::user::router::get_router().await)
         .layer(trace)
 }
 
