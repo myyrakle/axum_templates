@@ -24,11 +24,15 @@ pub(crate) async fn get_router() -> Router {
             },
         );
 
-    Router::new()
+    // Root Routing
+    let router = Router::new()
         .route("/", get(index))
         .route("/health", get(health))
         .nest("/user", crate::routes::user::router::get_router().await)
-        .layer(trace)
+        // Append the new route here. (don't delete this comment)
+        .layer(trace);
+
+    router
 }
 
 async fn index() -> Html<&'static str> {
