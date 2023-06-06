@@ -21,8 +21,7 @@ pub(crate) async fn get_router() -> Router {
         .route("/:id", get(get_one))
         .route("/:id", post(post_one))
         .route("/:id", put(health))
-        .route("/:id", delete(health))
-        .layer(trace);
+        .route("/:id", delete(health));
 
     router
 }
