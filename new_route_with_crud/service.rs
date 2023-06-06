@@ -33,7 +33,7 @@ impl #Name#Service {
     pub fn find_one(&self, id: i32) -> Get#Name#Response {
         // find something...
         Get#Name#Response { 
-            data: User { 
+            data: #Name# { 
                 id,
             } 
         }
@@ -43,7 +43,7 @@ impl #Name#Service {
         // find something...
         List#Name#Response { 
             list: vec![
-                User { 
+                #Name# { 
                     id: 1
                 } 
             ] 
