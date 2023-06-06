@@ -47,7 +47,7 @@ async fn get_one(Path(id): Path<i32>) -> impl IntoResponse {
 async fn post_one(Json(body): Json<Create#Name#Request>) -> impl IntoResponse {
     let service = #Name#Service::new();
 
-    let response = service.create_one(id);
+    let response = service.create_one(body);
 
     Json(response).into_response()
 }
