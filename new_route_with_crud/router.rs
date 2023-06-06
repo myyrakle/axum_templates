@@ -2,7 +2,7 @@ use std::time::Duration;
 
 use axum::body::{Body, BoxBody};
 use axum::Json;
-use axum::extract::Path,
+use axum::extract::Path;
 use axum::{
     http::{Request, Response},
     response::{Html, IntoResponse},
