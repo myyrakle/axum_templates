@@ -28,16 +28,16 @@ impl #Name#Service {
         Delete#Name#Response { }
     }
 
-    pub fn find_one(&self, _dto: Get#Name#Request) -> Get#Name#Response {
+    pub fn find_one(&self, id: i32) -> Get#Name#Response {
         // find something...
         Get#Name#Response { 
             data: User { 
-                id: 1
+                id,
             } 
         }
     }
 
-    pub fn find_all(&self, _dto: List#Name#Request) -> List#Name#Response {
+    pub fn find_all(&self) -> List#Name#Response {
         // find something...
         List#Name#Response { 
             list: vec![
