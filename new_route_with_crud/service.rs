@@ -6,6 +6,8 @@ use super::dtos::update_#name#_request::Update#Name#Request;
 use super::dtos::update_#name#_response::Update#Name#Response;
 use super::dtos::delete_#name#_response::Delete#Name#Response;
 
+use super::vo::#name#::#Name#;
+
 pub struct #Name#Service {}
 
 impl #Name#Service {
