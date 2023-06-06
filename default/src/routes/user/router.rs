@@ -1,4 +1,4 @@
-use axum::{extract::Path, response::IntoResponse, routing::get, Json, Router};
+use axum::{extract::Path, response::IntoResponse, routing::get, Router};
 
 use super::service::UserService;
 
