@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Create#Name#Response
-{}
+pub struct #Name# {
+    pub id: i32,
+}

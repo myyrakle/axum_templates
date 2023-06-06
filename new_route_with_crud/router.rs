@@ -25,10 +25,10 @@ async fn get_list() -> Html<&'static str> {
     Html("<h1>Hello, World!</h1>")
 }
 
-use super::service::#name#Service;
+use super::service::#Name#Service;
 
 async fn health() -> impl IntoResponse {
-    let service = #name#Service::new();
+    let service = #Name#Service::new();
 
     let response = service.get_health();
 

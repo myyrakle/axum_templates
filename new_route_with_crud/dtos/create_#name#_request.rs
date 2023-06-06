@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Create#name#Request
+pub struct Create#Name#Request
 {}
