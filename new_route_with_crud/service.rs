@@ -18,7 +18,7 @@ impl #Name#Service {
         Create#Name#Response { id: 1 }
     }
 
-    pub fn update_one(&self, _id: i32, _dto: Create#Name#Request) -> Update#Name#Response {
+    pub fn update_one(&self, _id: i32, _dto: Update#Name#Request) -> Update#Name#Response {
         // update something...
         Update#Name#Response { }
     }
