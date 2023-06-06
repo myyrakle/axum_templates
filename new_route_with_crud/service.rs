@@ -20,7 +20,7 @@ impl #Name#Service {
 
     pub fn update_one(&self, _id: i32, _dto: Create#Name#Request) -> Update#Name#Response {
         // update something...
-        Create#Name#Response { }
+        Update#Name#Response { }
     }
 
     pub fn delete_one(&self, _id: i32) -> Delete#Name#Response {
