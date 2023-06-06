@@ -1,12 +1,10 @@
 #![cfg(test)]
 
-use crate::routes::root::service::RootService;
+use crate::routes::root::service::#Name#Service;
 
 #[test]
-pub fn get_health_check() {
-    let service = RootService::new();
+pub fn example() {
+    let _service = #Name#Service::new();
 
-    let response = service.get_health();
-
-    assert_eq!(response.server_ok, true);
+    assert_eq!(10, 10);
 }
