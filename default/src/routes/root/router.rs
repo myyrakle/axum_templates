@@ -5,7 +5,7 @@ use axum::{
     http::{Request, Response},
     response::{Html, IntoResponse},
     routing::get,
-    Json, Router,
+    Router,
 };
 use tower_http::trace::TraceLayer;
 use tracing::Span;
@@ -34,10 +34,12 @@ async fn index() -> Html<&'static str> {
     Html("<h1>Hello, World!</h1>")
 }
 
-use super::dtos::health_response::HealthReponse;
+use super::service::RootService;
 
 async fn health() -> impl IntoResponse {
-    let server_ok = true;
+    let service = RootService::new();
 
-    Json(HealthReponse { server_ok }).into_response()
+    let response = service.get_health();
+
+    response.into_response()
 }
