@@ -51,3 +51,11 @@ async fn post_one(Json(body): Json<Create#Name#Request>) -> impl IntoResponse {
 
     Json(response).into_response()
 }
+
+async fn put_one(Path(id): Path<i32>, Json(body): Json<Update#Name#Request>) -> impl IntoResponse {
+    let service = #Name#Service::new();
+
+    let response = service.update_one(id, body);
+
+    Json(response).into_response()
+}
