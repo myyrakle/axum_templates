@@ -1,4 +1,4 @@
-use axum::{extract::Path, response::IntoResponse, routing::get, Router};
+use axum::{extract::Path, response::IntoResponse, routing::get, Json, Router};
 
 use super::service::UserService;
 
@@ -13,7 +13,7 @@ async fn get_user_list() -> impl IntoResponse {
 
     let response = service.find_user_list();
 
-    response.into_response()
+    Json(response).into_response()
 }
 
 async fn find_user_by_id(Path(user_id): Path<i32>) -> impl IntoResponse {
@@ -21,5 +21,5 @@ async fn find_user_by_id(Path(user_id): Path<i32>) -> impl IntoResponse {
 
     let response = service.find_user_by_id(user_id);
 
-    response.into_response()
+    Json(response).into_response()
 }

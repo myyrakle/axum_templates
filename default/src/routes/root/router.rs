@@ -1,6 +1,7 @@
 use std::time::Duration;
 
 use axum::body::{Body, BoxBody};
+use axum::Json;
 use axum::{
     http::{Request, Response},
     response::{Html, IntoResponse},
@@ -41,5 +42,5 @@ async fn health() -> impl IntoResponse {
 
     let response = service.get_health();
 
-    response.into_response()
+    Json(response).into_response()
 }

@@ -1,5 +1,3 @@
-use axum::Json;
-
 use super::dtos::user::User;
 
 pub struct UserService {}
@@ -9,7 +7,7 @@ impl UserService {
         Self {}
     }
 
-    pub fn find_user_list(&self) -> Json<Vec<User>> {
+    pub fn find_user_list(&self) -> Vec<User> {
         let user_list = vec![
             User {
                 user_id: 1,
@@ -21,15 +19,15 @@ impl UserService {
             },
         ];
 
-        Json(user_list)
+        user_list
     }
 
-    pub fn find_user_by_id(&self, id: i32) -> Json<User> {
+    pub fn find_user_by_id(&self, id: i32) -> User {
         let user = User {
             user_id: id,
             user_name: "test".to_string(),
         };
 
-        Json(user)
+        user
     }
 }

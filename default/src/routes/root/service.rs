@@ -1,5 +1,3 @@
-use axum::Json;
-
 use super::dtos::health_response::HealthReponse;
 
 pub struct RootService {}
@@ -9,9 +7,9 @@ impl RootService {
         Self {}
     }
 
-    pub fn get_health(&self) -> Json<HealthReponse> {
+    pub fn get_health(&self) -> HealthReponse {
         let server_ok = true;
 
-        Json(HealthReponse { server_ok })
+        HealthReponse { server_ok }
     }
 }
