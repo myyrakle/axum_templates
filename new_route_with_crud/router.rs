@@ -59,3 +59,11 @@ async fn put_one(Path(id): Path<i32>, Json(body): Json<Update#Name#Request>) -> 
 
     Json(response).into_response()
 }
+
+async fn delete_one(Path(id): Path<i32>) -> impl IntoResponse {
+    let service = #Name#Service::new();
+
+    let response = service.delete_one(id);
+
+    Json(response).into_response()
+}
