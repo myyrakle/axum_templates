@@ -1,6 +1,6 @@
 use axum::{extract::Path, response::IntoResponse, routing::get, Json, Router};
 
-use super::dtos::user::User;
+use super::service::UserService;
 
 pub(crate) async fn get_router() -> Router {
     Router::new()
@@ -9,25 +9,17 @@ pub(crate) async fn get_router() -> Router {
 }
 
 async fn get_user_list() -> impl IntoResponse {
-    let user_list = vec![
-        User {
-            user_id: 1,
-            user_name: "test".to_string(),
-        },
-        User {
-            user_id: 2,
-            user_name: "test2".to_string(),
-        },
-    ];
+    let service = UserService::new();
 
-    Json(user_list).into_response()
+    let response = service.find_user_list();
+
+    response.into_response()
 }
 
 async fn find_user_by_id(Path(user_id): Path<i32>) -> impl IntoResponse {
-    let user = User {
-        user_id,
-        user_name: "test".to_string(),
-    };
+    let service = UserService::new();
 
-    Json(user).into_response()
+    let response = service.find_user_by_id(user_id);
+
+    response.into_response()
 }
