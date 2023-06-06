@@ -20,8 +20,8 @@ pub(crate) async fn get_router() -> Router {
         .route("/", get(get_list))
         .route("/:id", get(get_one))
         .route("/:id", post(post_one))
-        .route("/:id", put(health))
-        .route("/:id", delete(health));
+        .route("/:id", put(put_one))
+        .route("/:id", delete(delete_one));
 
     router
 }
